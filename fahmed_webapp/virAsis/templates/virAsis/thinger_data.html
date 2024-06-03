@@ -1,0 +1,80 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Controlling Appliance via web pag</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{% static 'virAsis/css/style3.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Center</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <script  src="script.js"></script>
+    
+  <style>
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+  </style>
+</head>
+<body onload = "fetchStatus()">
+<header>
+
+  
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a href="{%url 'main' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <li><a href="{% url 'home' %}">Control</a></li>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'contact'%}">Contact us</a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'thinger'%}">thinger data</a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+
+</header>
+<body>
+    <div class="container mt-5">
+        <h1>Thinger.io Data</h1>
+        <div class="card">
+            <div class="card-body">
+                {% if data.error %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ data.error }}
+                    </div>
+                {% else %}
+                    <h3>Temperature: {{ data.temperature }} °C</h3>
+                    <h3>Humidity: {{ data.humidity }}</h3>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <footer>
+        © 2024 Fahmedahs1. All Rights Reserved.
+    </footer>
+</body>
+</html>
+
